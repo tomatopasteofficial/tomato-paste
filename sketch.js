@@ -9,6 +9,7 @@ let text4 = [];
 let text5 = []; 
 let text6 = [];  
 let randText = []; 
+let currentText = " ";
 
 let start;
 let main;
@@ -92,13 +93,14 @@ function draw() {
   
   //random text 
   if (scene == 3){
-    for (let i = 0; i < text1.length; i++){ 
+    // for (let i = 0; i < text1.length; i++){ 
+
       textSize(30); 
       textFont(fontA);
-      textAlign(LEFT, CENTER);
+      textAlign(LEFT, TOP);
       fill(0); 
-      text(randText[i], 10, i * 60 + 20); 
-    }
+      text(currentText, 50, 50, 500, 500 ); 
+    // }
   }
 }
 
@@ -146,6 +148,7 @@ function mousePressed() {
       scene = 2; 
       console.log('start'); 
     }
+    return;
   }
   
   //return 
@@ -164,6 +167,7 @@ function mousePressed() {
     }
   }
   
+  //settings
   if (scene == 2){
     if (button(95, 150, 80) == true){
       scene = 3; 
@@ -201,4 +205,6 @@ function mousePressed() {
     randText.push(tempText1[randomLine]); 
     tempText1.splice(randomLine, 1);  
   }
+
+  currentText = randText[int(random(0,randText.length-1))]
 }
